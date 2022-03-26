@@ -120,5 +120,12 @@ class Promise1 {
 
         return promise2
     }
+
+    static reject(reason) {
+        return new Promise1((resolve, reject) => {
+            reject(reason)
+        })
+    }
 }
+
 

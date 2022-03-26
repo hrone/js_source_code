@@ -64,6 +64,11 @@ class Promise1 {
 
     // todo: 补充then的实现md
     then(onfulfilled, onrejected) {
+        onfulfilled = typeof onfulfilled === 'function' ? onfulfilled : value => value
+        onrejected = typeof onrejected === 'function' ? onrejected : err => {
+            throw new Error(err)
+        }
+
         const promise2 = new Promise1((resolve, reject) => {
             if (this.status === FULFILLED) {
                 setTimeout(() => {

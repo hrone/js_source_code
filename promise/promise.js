@@ -42,6 +42,7 @@ class Promise1 {
             if (this.status === PENDING) {
                 this.value = value
                 this.status = FULFILLED
+                this.onFulfilledCallbacks.forEach(fn => fn())
             }
         }
 
@@ -49,6 +50,7 @@ class Promise1 {
             if (this.status === PENDING) {
                 this.reason = reason
                 this.status = REJECTED
+                this.onRejectledCallbacks.forEach(fn => fn())
             }
         }
 

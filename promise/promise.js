@@ -126,6 +126,10 @@ class Promise1 {
             reject(reason)
         })
     }
+
+    catch(onRejected) {
+        this.then(null, onRejected)
+    }
 }
 
 

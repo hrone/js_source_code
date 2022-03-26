@@ -5,3 +5,5 @@
 - 只要这两种情况发生，状态就凝固了，不会再变了
 - `executor`函数默认执行， 但是有可能报错，需要需要`try` - `catch`
 - 在内部声明 `resolve`, `reject` ，查看`status`后赋值，并且修改`status`状态
+
+## then的实现

@@ -130,6 +130,30 @@ class Promise1 {
     catch(onRejected) {
         this.then(null, onRejected)
     }
+
+    static all(promises) {
+        return new Promise1((resolve, reject) => {
+            const result = []
+            let index = 0
+
+            function process(i, value) {
+                result[i] = value
+                if (++index === promises.length) {
+                    resolve(result)
+                }
+            }
+
+            promises.forEach((p, i) => {
+                if (p && typeof p.then === 'function') {
+                    p.then(value => {
+                        process(i, value)
+                    }, reject)
+                } else {
+                    process(i, p)
+                }
+            })
+        })
+    }
 }
 
 
